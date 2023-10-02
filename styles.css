@@ -3,8 +3,12 @@
   margin: 0;
   padding: 0;
 }
+body.no-scroll {
+  overflow: hidden;
+}
 body {
   font-family: "Karla", sans-serif;
+  font-weight: 400;
   display: flex;
   flex-direction: column;
 }
@@ -33,14 +37,22 @@ header li {
   margin-top: 10px;
 }
 header li:last-child {
-  border: 1px solid var(--dark-violet) !important;
+  border: 2px solid var(--dark-violet) !important;
+}
+header li:last-child:hover {
+  border: 2px solid var(--dark-violet) !important;
+  background-color: var(--dark-violet);
+}
+.view a:hover {
+  color: var(--very-light-gray) !important;
 }
 header a {
   text-decoration: none;
   color: var(--dark-grayish-violet);
+  font-weight: 700;
 }
 header a:hover {
-  color: var(--very-light-gray);
+  color: var(--very-dark-violet) !important;
 }
 
 .navbar {
@@ -54,12 +66,9 @@ header a:hover {
   margin-right: 80px;
 }
 .navbar .links li {
-  border: 1px solid transparent;
   padding: 8px 25px;
 }
-.navbar .links li:hover {
-  background-color: var(--dark-violet);
-}
+
 .navbar .toggle_btn {
   display: none;
   margin-top: 10px;
@@ -70,11 +79,12 @@ header a:hover {
   border: 1px solid #ccc;
   padding: 10px;
   z-index: 1;
+  font-weight: 400;
   background-color: var(--dark-violet);
   background-image: url("images/bg-pattern-mobile-nav.svg");
   background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom;
+  background-size: 100%;
+  background-position: 100% 90%;
 }
 
 .dropdown_menu.open {
@@ -88,17 +98,21 @@ header a:hover {
   justify-content: center;
   padding: 15px 15px;
   margin-top: 30px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   cursor: pointer;
 }
 .dropdown_menu li:hover {
-  border: 1px solid var(--very-light-gray);
+  border: 2px solid var(--very-light-gray);
 }
 .dropdown_menu a {
   text-decoration: none;
   color: var(--very-light-gray);
-  font-size: 21px;
+  font-weight: 400;
 }
+.dropdown_menu a:hover {
+  color: var(--very-light-gray) !important;
+}
+
 .dropdown_menu li:first-child {
   margin-top: 20px;
 }
@@ -160,18 +174,22 @@ main {
 }
 .hero_text p {
   color: var(--dark-grayish-violet);
-  font-size: 17px;
+  font-weight: 400;
   text-align: left;
 }
-.hero_text button {
+.hero_text a {
+  display: grid;
+  place-items: center;
+  text-decoration: none;
   margin: 10px 0;
   padding: 10px 10px;
   background: transparent;
   color: var(--dark-grayish-violet);
-  border: 1px solid var(--very-light-gray);
+  border: 2px solid var(--very-light-gray);
   width: 200px;
+  font-weight: 700;
 }
-.hero_text button:hover {
+.hero_text a:hover {
   background-color: var(--very-light-gray);
   color: var(--dark-violet);
 }
@@ -196,7 +214,7 @@ main {
 }
 .process h1 {
   margin-top: 10px;
-  color: rgb(34, 34, 34);
+  color: var(--very-dark-violet);
   font-size: 32px;
 }
 .taglines {
@@ -218,8 +236,8 @@ main {
   font-size: 16px;
   color: var(--dark-grayish-violet);
 }
-.steps h4 {
-  color: rgb(34, 34, 34);
+.steps h2 {
+  color: var(--very-dark-violet);
 }
 /* how we work section */
 .findMore {
@@ -240,17 +258,19 @@ main {
   color: var(--very-light-gray);
   margin-left: 50px;
 }
-.findMore button {
+.findMore a {
+  text-decoration: none;
   padding: 5px 10px;
   background-color: transparent;
   color: var(--very-light-gray);
-  border: 1px solid var(--very-light-gray);
+  border: 2px solid var(--very-light-gray);
   margin-right: 130px;
+  font-weight: 700;
 }
-.findMore button:hover {
+.findMore a:hover {
   background-color: var(--very-light-gray);
   color: var(--dark-violet);
-  border: 1px solid transparent;
+  border: 2px solid transparent;
 }
 
 .HowWeWorkImg img {
@@ -292,9 +312,16 @@ footer {
 .socials a {
   text-decoration: none;
 }
-.socials a:hover {
-  color: var(--very-dark-violet) !important;
+
+svg path {
+  fill: #837d88;
+  transition: fill 0.3s ease;
 }
+
+svg:hover path {
+  fill: var(--very-dark-violet);
+}
+
 .socials ul {
   display: flex;
   flex-direction: row;
@@ -313,12 +340,11 @@ footer {
 }
 .footerLinks li {
   list-style: none;
-  margin-bottom: 10px;
 }
 .footerLinks a {
   text-decoration: none;
-  color: var(--dark-violet);
-  font-size: 16px;
+  color: var(--very-dark-violet);
+  font-weight: 700;
 }
 .footerLinks a:hover {
   text-decoration: underline;
@@ -329,9 +355,13 @@ footer {
 }
 
 /* mobile design 375px */
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 992px) {
   .navbar .links {
     display: none;
+  }
+  .views a {
+    border: 2px solid var(--very-light-gray) !important;
+    padding: 5% 30%;
   }
   .navbar .toggle_btn {
     display: block;
@@ -370,6 +400,9 @@ footer {
   .hero_text hr {
     display: none;
   }
+  .hero_text {
+    margin-left: 10%;
+  }
   .mobileIntroImg {
     display: block;
     width: 100%;
@@ -382,29 +415,29 @@ footer {
     position: absolute;
     left: 0;
   }
-  .hero_text {
-    margin-left: 0;
-    margin-bottom: 20px;
-  }
-  .hero_text button {
-    margin: 20px 0 20px 0;
-  }
+
   .textButton {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 200%;
-    margin-top: 40%;
-    margin-bottom: 40%;
+    margin-top: 60%;
+    margin-bottom: 50%;
   }
   .textButton p {
-    width: 90%;
+    width: 100%;
+    text-align: center;
+  }
+  .textButton h1 {
+    width: 100%;
+    font-size: 42px;
+    text-align: center;
   }
   .introRightMobile {
     display: block;
     position: absolute;
     right: 0;
-    margin-top: 120%;
+    margin-top: 160%;
   }
   .introRightMobile img {
     width: 100%;
@@ -444,7 +477,7 @@ footer {
     background-size: 60%;
     width: 90%;
   }
-  .findMore button {
+  .findMore a {
     margin: 0;
   }
   .findMore h2 {
